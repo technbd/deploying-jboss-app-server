@@ -4,6 +4,8 @@ JBoss is a popular open-source application server and middleware platform that i
 ### Prerequisites:
 - Linux System (like Centos, Redhat)
 - JAVA Installed (java version 8 or higher)
+- Maven
+- Git 
 
 
 ### Download and Install JBoss/WildFly:
@@ -148,6 +150,27 @@ WildFly should now be running, and you can access the admin console at http://yo
 ![Screenshot](./assets/web-admin.jpg)
 
 
+### Build the WAR File: (Optional)
+Here, build the sample hello world java application packaged as a WAR file.
+
+<details>
+  <summary>Build the WAR File:</summary>
+
+1. git clone https://github.com/technbd/deploying-jboss-app-server.git
+2. cd deploying-jboss-app-server
+3. mvn clean package
+4. then deploy WAR file: target/hello-1.0.war
+
+```
+ls -l target/hello-1.0.war
+-rw-r--r-- 1 root root 30346 Oct 12 19:42 target/hello-1.0.war
+```
+
+Done!
+Open your browser at http://your-ip:port/app-name or like http://your-ip:8080/hello:1.0
+
+</details>
+
 ### Deploy the WAR File:
 To deploy an application using JBoss (or its successor, WildFly), you can follow these general steps.  I'll provide an overview of the process, but please note that specific details may vary depending on your JBoss/WildFly version and the type of application you are deploying (e.g., WAR, EAR, or JAR file).
 
@@ -208,7 +231,6 @@ cp /jboss/war_file/helloworld.war /opt/wildfly/standalone/deployments/
 
 tail -f /opt/wildfly/standalone/log/server.log
 ```
-
 
 ### Test the Accessibility:
 To verify if your WildFly server is accessible from the internet, you can try accessing it using a web browser or tools like "curl" from a remote machine. For example, http://your-ip:8080/your-app
